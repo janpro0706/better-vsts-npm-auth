@@ -1,5 +1,5 @@
 {
-  "name": "better-vsts-npm-auth",
+  "name": "auto-vsts-npm-auth",
   "version": "5.0.1",
   "description": "Platform agnostic library which provides a robust solution for maintaining credentials in your npmrc files",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
     "prettier:autofix": "prettier --write *.{js,json,md}",
     "prettier:ci": "prettier -l *.{js,json,md}"
   },
-  "repository": "https://github.com/zumwald/better-vsts-npm-auth.git",
+  "repository": "https://github.com/janpro0706/better-vsts-npm-auth.git",
   "author": "Daniel Zumwalt <daniel.zumwalt@moutlook.com>",
   "license": "MIT",
   "dependencies": {

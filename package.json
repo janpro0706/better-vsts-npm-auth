@@ -12,7 +12,7 @@
     "dist"
   ],
   "bin": {
-    "better-vsts-npm-auth": "dist/cli.js"
+    "auto-vsts-npm-auth": "dist/cli.js"
   },
   "scripts": {
     "ci": "yarn run build && yarn run test:ci",

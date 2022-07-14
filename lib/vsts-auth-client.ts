@@ -3,6 +3,7 @@ import { decode } from "jsonwebtoken";
 import { Config } from "./config";
 import fetch from "node-fetch";
 import * as querystring from 'querystring';
+import { run } from '../index';
 
 const k_REFRESH_TOKEN = "refresh_token";
 
@@ -54,6 +55,15 @@ export async function getUserAuthToken(): Promise<string> {
   });
 
   const body = await response.json();
+
+  if (body && body.expires_in) {
+    const expiresIn = Number(body.expires_in);
+    console.log(`Re-Authenticate after ${expiresIn}`);
+    setTimeout(() => {
+      console.log('Re-Authenticating npmrc...');
+      run();
+    }, expiresIn * 1000);
+  }
 
   if (!body || !body[k_REFRESH_TOKEN] || !body.access_token) {
     throw "malformed response body:\n" + body;

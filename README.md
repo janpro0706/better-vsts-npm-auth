@@ -2,6 +2,13 @@
 
 This library was forked from [better-vsts-npm-auth](https://github.com/zumwald/better-vsts-npm-auth)
 
+## Using better-vsts-npm-auth as an Alias
+
+If you want to use `better-vsts-npm-auth` as an alias, then `better-vsts-npm-auth` must not be installed.
+```
+npm uninstall -g better-vsts-npm-auth
+```
+
 ## Installation
 
 While not necessary, _auto-vsts-npm-auth_ was built to be used as a global module.

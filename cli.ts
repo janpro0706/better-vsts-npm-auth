@@ -87,6 +87,11 @@ const argv = require("yargs")
     describe: "print the stack trace on error",
     type: "boolean"
   })
+  .options("h", {
+    alias: "hours",
+    describe: "hours to keep authenticated. (default: 9; 9 to 6)",
+    type: "number"
+  })
   .command({
     command: "config [command]",
     desc: 'modify the config (run "config --help" for more info)',

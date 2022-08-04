@@ -5,6 +5,7 @@ import { AuthorizationError } from "./lib/vsts-auth-client";
 import { YarnrcYml } from "./lib/yarnrcyml";
 const uuid = require("uuid/v4");
 import * as fs from "fs";
+import { exit } from "process";
 
 export { setRefreshToken } from "./lib/vsts-auth-client";
 
@@ -39,7 +40,16 @@ export interface IRunOptions {
   npmrcPath?: string;
   yarnrcYmlPath?: string;
   stack?: boolean;
+  hours?: number;
 }
+
+let hoursToKeepAuth = 9;
+const setTerminateTimer = (hours: any, cb: Function) => {
+  setTimeout(() => {
+    cb();
+    exit(0);
+  }, 1000 * 60 * 60 * hours);
+};
 
 export async function run(options: IRunOptions = {}) {
   let configObj: IConfigDictionary;
@@ -53,6 +63,13 @@ export async function run(options: IRunOptions = {}) {
     // if npmrcPath / yarnrcPath isn't specified, default is the working directory
     options.npmrcPath = options.npmrcPath || process.cwd();
     options.yarnrcYmlPath = options.yarnrcYmlPath || process.cwd();
+    
+    hoursToKeepAuth = options.hours || 9;
+
+    console.log(`Keep authenticating for ${hoursToKeepAuth} hours.`);
+    setTerminateTimer(hoursToKeepAuth, () => {
+      console.log(`Generously terminating auto-vsts-npm-auth.`);
+    });
 
     const projectYarnrcYml = new YarnrcYml(options.yarnrcYmlPath);
     const isProjectUsingYarnv2 = fs.existsSync(projectYarnrcYml.filePath);
@@ -117,3 +134,5 @@ export async function run(options: IRunOptions = {}) {
     }
   }
 }
+
+export { hoursToKeepAuth };

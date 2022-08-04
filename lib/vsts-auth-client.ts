@@ -58,6 +58,7 @@ export async function getUserAuthToken(): Promise<string> {
 
   if (body && body.expires_in) {
     const expiresIn = Number(body.expires_in);
+    // TODO: log below after expiring
     console.log(`Re-Authenticate after ${expiresIn}`);
     setTimeout(() => {
       console.log('Re-Authenticating npmrc...');

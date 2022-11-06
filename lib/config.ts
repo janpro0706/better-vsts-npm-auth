@@ -10,9 +10,9 @@ const getConfigPath = (): string =>
   configPathOverride ? configPathOverride : DEFAULT_CONFIG_PATH;
 
 const defaults = {
-  clientId: "DE516D90-B63E-4994-BA64-881EA988A9D2",
-  redirectUri: "https://stateless-vsts-oauth.azurewebsites.net/oauth-callback",
-  tokenEndpoint: "https://stateless-vsts-oauth.azurewebsites.net/token-refresh",
+  clientId: "1882c029-4707-4aee-8a95-bfa547a64563",
+  redirectUri: "https://stateless-vsts-npm-auth.azurewebsites.net/oauth-callback",
+  tokenEndpoint: "https://stateless-vsts-npm-auth.azurewebsites.net/token-refresh",
   tokenExpiryGraceInMs: "1800000"
 };
 
